@@ -5,45 +5,53 @@ import FormTareas from './formTareas';
 import Tarea from './tarea';
 
 function ListadoTareas () {
-  const[tasques, setTasques]= useState([]);
-  
-  const añadirTareas = tasca => {
-    const tareasActuales = [...tasques, tasca]
-    setTasques(tareasActuales);
+
+  const[tareas, setTareas]= useState([]);
+
+  const añadirTarea = tarea => {
+    console.log(tarea)
+    const tareasActuales = [...tareas, tarea];
     console.log(tareasActuales)
-  };
+    setTareas(tareasActuales)
+  }
 
-  const eliminarTasca = id => {
-    const tasquesRestants = tasques.filter((tasca, index) => index !== id);
-    setTasques(tasquesRestants);
-    }
+  const eliminarTarea = id => {
+    const tasquesRestants = tareas.filter((tarea, index) => index !== id);
+    setTareas(tasquesRestants);
+}
 
-    const completarTasca = id => {
-        const tasquesActuals = tasques.map((tasca,index)=>{
-            if(index === id){
-                return{...tasca, completada:!tasca.completada}
-            }
-            return tasca;
-        })
-        setTasques(tasquesActuals);
-        }
+
+   const completarTarea = id => {
+
+       const tasquesActuals = tareas.map((tarea,index)=>{
+          if(index === id){
+               return{...tarea, completada:true}
+           }
+           return tarea;
+       })
+       setTareas(tasquesActuals);
+   }
+
+   console.log(tareas);
+
   return (
     <>
     <h1>Mis tareas</h1>
-    <FormTareas funcAñadir={añadirTareas}>
-        {tasques.map((tasca, index)=>{
-            <Tarea
-            key={index}
-            id={index}
-            text={tasca.text}
-            completada={tasca.completada}
-            completarTasca={completarTasca}
-            eliminarTasca={eliminarTasca}
-            ></Tarea>
-        })}
-    </FormTareas>
+    <FormTareas funcionAñadir = {añadirTarea} > </FormTareas> 
+    <br />
+      {tareas.map((tasca, index) => (
+            <Tarea 
+                key={index}
+                id={index} 
+                text={tasca.text} 
+                completada={tasca.completada} 
+                completarTasca={completarTarea} 
+                eliminarTasca={eliminarTarea}
+            />
+       
+        ))}
+     
     </>
-    
   );
 
 }

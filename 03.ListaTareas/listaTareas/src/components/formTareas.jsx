@@ -1,27 +1,32 @@
-/* eslint-disable no-unused-vars */
 import { FaPlus } from 'react-icons/fa';
 import { useState } from 'react'
 
 function FormTareas(props){
-    const[tasques, setTextTasca]= useState([]);
-    const textTasca = '';
+
+    const[textTasca, setTextTasca]= useState('');
 
     const canviTextTasca = e => {
         setTextTasca(e.target.value);
-        console.log('value is:', e.target.value);
         };
     const enviarForm = e => {
         e.preventDefault();
         const tascaNova= {
-        titol: {textTasca},
+        text: textTasca,
         completada: false
         }
-        props.funcAñadir(tascaNova);
+        console.log(tascaNova);
+        props.funcionAñadir(tascaNova);
+        setTextTasca('');
     }
     return(
         <>
-        <input type="text" />
-        <button type='submit'><FaPlus></FaPlus></button>
+        <form onSubmit={enviarForm}>
+            <div style={{alignItems: 'center' }}>
+                <input style={{height:'25px', marginRight: '10px'}} placeholder="introduzca una tarea" value={textTasca} onChange={canviTextTasca} type="text" />
+                <button type='submit' ><FaPlus></FaPlus> Añadir tarea</button>
+            </div>
+            
+        </form>
         </>
     );
 }
