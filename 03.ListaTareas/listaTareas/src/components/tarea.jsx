@@ -1,5 +1,6 @@
 
 import { FaTimes } from 'react-icons/fa';
+// definicion de estilos para el componente
 const box = {
     border: '1px solid black', 
     padding: '10px', 
@@ -17,7 +18,8 @@ const estiloTexto = {
     marginRight: '10px'
 };
 
-
+//Definicion del componente Tarea
+//contiene solo el texto y un boton icono de eliminar
  
 const Tarea = ({id, text, completada, completarTasca, eliminarTasca})=>
 {

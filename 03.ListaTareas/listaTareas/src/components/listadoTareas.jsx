@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import FormTareas from './formTareas';
 import Tarea from './tarea';
-
+//Componente que se encarga de contener el formTarea y de este renderizar las tareas
 function ListadoTareas () {
 
   const[tareas, setTareas]= useState([]);
@@ -31,8 +31,6 @@ function ListadoTareas () {
        })
        setTareas(tasquesActuals);
    }
-
-   console.log(tareas);
 
   return (
     <>

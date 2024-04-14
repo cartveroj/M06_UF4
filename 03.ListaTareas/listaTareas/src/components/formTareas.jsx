@@ -1,13 +1,14 @@
 import { FaPlus } from 'react-icons/fa';
 import { useState } from 'react'
-
+//componente Form que contiene el input y un boton de submit
 function FormTareas(props){
 
     const[textTasca, setTextTasca]= useState('');
 
     const canviTextTasca = e => {
         setTextTasca(e.target.value);
-        };
+    };
+
     const enviarForm = e => {
         e.preventDefault();
         const tascaNova= {
