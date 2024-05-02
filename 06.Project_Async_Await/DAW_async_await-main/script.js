@@ -11,9 +11,10 @@ let moviesResult = document.getElementById("moviesResult");
 var total_pages = 0;
 var current_page = 1;
 
-let isSearching = false;
+let isSearching = false; 
 let firstQuery = "";
 
+/* Se encarga de ir cargando las movies a medida que se termina de ver el contenido */
 window.addEventListener('scroll', async () => {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
@@ -25,6 +26,7 @@ window.addEventListener('scroll', async () => {
   }
 });
 
+/*Funcion que se encarga de añadir a favoritos las movies */
 function setFav(id, favBool){
 
     moviesResult.innerHTML="";
@@ -44,14 +46,13 @@ function setFav(id, favBool){
           console.log("movie id: "+id+ " marked as: "+favBool)
         })
         .catch(err => console.error(err));
-    showFavs();    
+    showFavs();    //volvemos a mostrar las pelis favoritas
     firstQuery=""; //borramos el parametro de busqueda para que no se ejecute el search 
     
 }
 
-
+//Funcion que se encarga de hacer la llamada a la api y mostrar por pantalla
 async function showFavs(){
-   // moviesResult.innerHTML="";
     const options = {
         method: 'GET',
         headers: {
@@ -95,14 +96,14 @@ async function searchMovies(query){
       console.log("total_pages: "+total_pages);
       for(const movie of data.results){
 
-        let isFavorite = await checkIfFavorite(movie.id);
+        let isFavorite = await checkIfFavorite(movie.id); //verificamos si es favorito o no
         printMovie(movie, isFavorite, false);
       }
    
       isSearching = false; 
 }
 
-
+/*Funcion que se encarga de verificar si esta en favoritos o no la movie */
 async function checkIfFavorite(movieId) {
     const options = {
       method: 'GET',
@@ -117,6 +118,7 @@ async function checkIfFavorite(movieId) {
     return data.favorite;
 }
 
+/*Funciones que muestran el spinner */
 function showLoadingGif() {
     document.getElementById('loading-spinner').style.display = 'block';
 }
