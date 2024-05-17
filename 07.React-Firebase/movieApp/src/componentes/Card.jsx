@@ -17,7 +17,6 @@ const styles = {
       padding: "20px",
       margin: "10px",
       textAlign: "center",
-     // backgroundColor: "#f9f9f9",
     },
 
     link: {

@@ -1,15 +1,21 @@
+/* eslint-disable react/prop-types */
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from './Button';
 
-const FormLogin = () => {
-  const [name, setName] = useState('');
+const FormLogin = ({setUser}) => {
+
+  const [name, setName] = useState('') ;
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/movies', { state: { name } });
+    setUser(name)
+    navigate('/movies');
   };
 
+ 
   return (
     <div>
       <h1>Bienvenido a MovieZone</h1>
@@ -19,11 +25,11 @@ const FormLogin = () => {
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+             onChange={(e) => setName(e.target.value)}
           />
         <br />
         <br />
-        <button type="submit">Ir a Home</button>
+        <Button type="submit" texto="ir a Home"></Button>
       </form>
     </div>
   );

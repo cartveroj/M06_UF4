@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import FormLogin from "../componentes/FormLogin";
 
-const Login = () => {
+const Login = ({setUser}) => {
     return (
         <>
-        <FormLogin></FormLogin>
+        <FormLogin setUser={setUser}></FormLogin>
         </>
     );
 

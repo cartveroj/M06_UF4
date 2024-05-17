@@ -1,0 +1,30 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  .navBar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .navBar a:hover {
+    color: #ccc;
+  }
+  
+  .navBar a:first-child {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+  }
+  
+  .navBar a:first-child img {
+    margin-right: 0.5rem;
+  }
+  

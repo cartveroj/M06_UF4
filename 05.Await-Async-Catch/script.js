@@ -146,7 +146,6 @@ function calculoDivision(valor1,valor2){
         }else{
             myResolve((numero1/numero2).toFixed(2))
         }
-
     });
 }
 

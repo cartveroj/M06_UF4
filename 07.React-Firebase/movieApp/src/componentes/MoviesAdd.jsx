@@ -1,10 +1,8 @@
-
-import firebaseConfig from "../config/config";
-import { initializeApp } from 'firebase/app';
 import { useState } from "react";
-import "firebase/firestore";
-
-
+import db from "../config/config";
+import {collection , addDoc} from 'firebase/firestore'
+import '../componentes/styles/card_list.css'
+import Button from "./Button";
 
 const FormMovieAdd = () => {
     const [movieData, setMovieData] = useState({
@@ -22,47 +20,69 @@ const FormMovieAdd = () => {
         setMovieData({...movieData, [name]:value})
       };
 
+
       const handleSubmit = (e) =>{
-        e.preventDefault();
-        const app = initializeApp(firebaseConfig);
-         const db = app.firestore();
-         db.collection("movies").add(movieData);
+          e.preventDefault();
+          const moviesRef = collection(db,"movies");
+          addDoc(moviesRef, movieData).then((doc)=>{
+            console.log(doc.id)
+            setMovieData({
+              title: "",
+              description: "",
+              director: "",
+              image: "",
+              rate: "",
+              year: "",
+              duration: ""
+            });
+          });
+
       };
     return (
       <>
-        <h2>Añadir peliculas</h2>
-        <form onSubmit={handleSubmit}>
+      <div className="containerFormAdd">
+      <h2>Añadir peliculas</h2>
+        <form className="formAdd" onSubmit={handleSubmit}>
             <div>
                 <label>Titulo:</label>
-                <input name="title" type="text" value={movieData.title} onChange={handleChange}/>
+                <input name="title" type="text" 
+                value={movieData.title} onChange={handleChange}/>
             </div>
             <div>
                 <label>Descripcion:</label>
-                <input name="description" type="text" value={movieData.description} onChange={handleChange}/>
+                <input name="description" type="text" 
+                value={movieData.description} onChange={handleChange}/>
             </div>
             <div>
                 <label>Director:</label>
-                <input name="director" type="text" value={movieData.director} onChange={handleChange}/>
+                <input name="director" type="text" 
+                value={movieData.director} onChange={handleChange}/>
             </div>
             <div>
                 <label>Imagen url:</label>
-                <input name="image" type="text"  value={movieData.image} onChange={handleChange}/>
+                <input name="image" type="text"  
+                value={movieData.image} onChange={handleChange}/>
             </div>
             <div>
                 <label>Rate 1 a 5:</label>
-                <input name="rate" type="text" value={movieData.rate} onChange={handleChange}/>
+                <input name="rate" type="text" 
+                value={movieData.rate} onChange={handleChange}/>
             </div>
             <div>
                 <label>Año:</label>
-                <input name="year" type="text" value={movieData.year} onChange={handleChange}/>
+                <input name="year" type="text" 
+                value={movieData.year} onChange={handleChange}/>
             </div>
             <div>
                 <label>Duración (minutos):</label>
-                <input name="duration" type="text" value={movieData.duration} onChange={handleChange}/>
+                <input name="duration" type="text" 
+                value={movieData.duration} onChange={handleChange}/>
             </div>
             <br></br>
-            <button type="submit">Añadir</button>
+            <Button type="submit" texto="Añadir"></Button>
         </form>
+      </div>
+        
       </>
     );
   };

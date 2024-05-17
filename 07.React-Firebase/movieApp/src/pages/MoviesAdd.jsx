@@ -1,14 +1,11 @@
-import Button from "../componentes/Button";
 import FormMovieAdd from "../componentes/MoviesAdd";
+import Navbar from "../componentes/Navbar";
 const MovieAdd = () => {
     return (
         <>
+        <Navbar/>
         <div>
             <FormMovieAdd></FormMovieAdd>
-        </div>
-        <br></br>
-        <div>
-       <Button label="Go back"></Button>
         </div>
         </>
       
