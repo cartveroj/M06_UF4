@@ -4,7 +4,9 @@ import {collection , addDoc} from 'firebase/firestore'
 import '../componentes/styles/card_list.css'
 import Button from "./Button";
 
+// componente que renderiza el formulario de añadir peliculas
 const FormMovieAdd = () => {
+
     const [movieData, setMovieData] = useState({
         title: "",
         description: "",
@@ -14,18 +16,20 @@ const FormMovieAdd = () => {
         year: "",
         duration: ""
       });
-
+      //metodo para recuperar el valor del input
       const handleChange = (e) =>{
         const {name, value} = e.target;
         setMovieData({...movieData, [name]:value})
       };
 
-
+      //metodo que gestiona en el momento de submit del form
+      //añade a la base datos
       const handleSubmit = (e) =>{
           e.preventDefault();
-          const moviesRef = collection(db,"movies");
+          const moviesRef = collection(db,"movies"); //referencia a la coleccion creada en la base de datos
           addDoc(moviesRef, movieData).then((doc)=>{
             console.log(doc.id)
+            //limpia los campos de los inputs 
             setMovieData({
               title: "",
               description: "",
@@ -78,7 +82,6 @@ const FormMovieAdd = () => {
                 <input name="duration" type="text" 
                 value={movieData.duration} onChange={handleChange}/>
             </div>
-            <br></br>
             <Button type="submit" texto="Añadir"></Button>
         </form>
       </div>

@@ -1,3 +1,4 @@
+//componente que recibe por parametro el nombre del usuario 
 
 const Welcome = ({ user }) => {
   return (

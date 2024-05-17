@@ -10,13 +10,13 @@ import MovieList from './pages/MoviesList';
 import { useState } from 'react';
 
 const App = () => {
-
+  //declaramos un hook para almacenar el nombre que introduce el usario al ahcer login
+  //lo declaramos de manera global para poder compartirlo con otros componentes
   const [user, setUser] = useState([]);
-
+  // definicion del enrutado de la aplicacion
   return (
     <>
-    <Router>
-       
+    <Router> 
         <Routes>
           <Route exact path="/" element={<Login setUser={setUser}/>} />
           <Route exact path="/movies" element={<Home user={user}/>} />

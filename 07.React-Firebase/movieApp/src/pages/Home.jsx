@@ -3,6 +3,8 @@ import Card from "../componentes/Card";
 import Navbar from "../componentes/Navbar";
 import Welcome from "../componentes/Welcome";
 import "../componentes/styles/card_list.css"
+
+//Pagina Home que renderiza diferentes componentes
 const Home = ({user}) => {
 
   return (

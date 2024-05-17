@@ -4,14 +4,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 
+//componente que contiene el formulario de login
+
 const FormLogin = ({setUser}) => {
 
   const [name, setName] = useState('') ;
   const navigate = useNavigate();
-
+//naveda al home al dar click al boton
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUser(name)
+    setUser(name) //funcion que recupera el nombre de usuario
     navigate('/movies');
   };
 

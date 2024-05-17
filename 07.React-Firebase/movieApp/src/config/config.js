@@ -2,6 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
+//objeto de conexion a la base de datos
 const firebaseConfig = {
     apiKey: "AIzaSyDd1dzWNHhZ_sJ0h73x-9cTQr1VaR9aX5E",
     authDomain: "basedatosreact.firebaseapp.com",

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
+//componente que recibe por parametros titulo y la direccion de enrutamiento
 const Card = ({title, link})=>{
     return(
         <>
@@ -17,6 +18,7 @@ const styles = {
       padding: "20px",
       margin: "10px",
       textAlign: "center",
+      background:"blueviolet"
     },
 
     link: {

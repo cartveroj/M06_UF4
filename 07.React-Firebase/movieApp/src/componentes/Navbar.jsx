@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import  "./styles/navbar.css"
 
+//componente navbar que contiene rutas a diferentes paginas de la aplicacion
 const Navbar = () => {
     return (
         <>
